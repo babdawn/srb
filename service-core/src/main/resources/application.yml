@@ -1,0 +1,28 @@
+# 端口号
+server:
+  port: 8110
+spring:
+  application:
+    name: service-core
+  datasource:
+    url: jdbc:mysql://192.168.146.129:3396/srb_core?serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    # 当前项目是开发环境
+    active: dev
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    # root表示当前项目所有的地方   info表示使用info级别输出
+    root: info
+    com.atguigu.srb.core.controller.admin: error
+    # 单独配置指定包或者指定类输出日志的级别
+    com.atguigu.srb.core.controller.admin.AdminIntegralGradeController: debug
+# 生产环境中 由于日志较多 所有有需求持久化日志，日志分不同级别保存  日志超过一定大小时还需要压缩保存或者自动删除
